@@ -6,7 +6,7 @@ require 'coveralls'
 Coveralls.wear!
 
 require 'minitest/autorun'
-require 'mocha/mini_test'
+require 'mocha/minitest'
 require 'faker'
 require 'active_support'
 require_relative '../lib/omniauth-openid-connect'

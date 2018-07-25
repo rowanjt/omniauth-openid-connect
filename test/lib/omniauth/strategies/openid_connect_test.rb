@@ -9,7 +9,7 @@ class OmniAuth::Strategies::OpenIDConnectTest < StrategyTestCase
   end
 
   def test_request_phase
-    expected_redirect = /^https:\/\/example\.com\/authorize\?client_id=1234&nonce=[\w\d]{32}&response_type=code&scope=openid&state=[\w\d]{32}$/
+    expected_redirect = /^https:\/\/example\.com\/authorize\?client_id=1234&nonce=[\w]{32}&response_type=code&scope=openid&state=[\w]{32}$/
     strategy.options.issuer = 'example.com'
     strategy.options.client_options.host = 'example.com'
     strategy.expects(:redirect).with(regexp_matches(expected_redirect))
@@ -17,7 +17,7 @@ class OmniAuth::Strategies::OpenIDConnectTest < StrategyTestCase
   end
 
   def test_request_phase_with_discovery
-    expected_redirect = /^https:\/\/example\.com\/authorization\?client_id=1234&nonce=[\w\d]{32}&response_type=code&scope=openid&state=[\w\d]{32}$/
+    expected_redirect = /^https:\/\/example\.com\/authorization\?client_id=1234&nonce=[\w]{32}&response_type=code&scope=openid&state=[\w]{32}$/
     strategy.options.client_options.host = 'example.com'
     strategy.options.discovery = true
 
@@ -280,7 +280,7 @@ class OmniAuth::Strategies::OpenIDConnectTest < StrategyTestCase
   end
 
   def test_option_client_auth_method
-    code = SecureRandom.hex(16)
+    # code = SecureRandom.hex(16)
     state = SecureRandom.hex(16)
     nonce = SecureRandom.hex(16)
 
